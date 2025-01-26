@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'book_comments/create'
-  get 'book_comments/destroy'
-  get 'create/destroy'
-  get 'favorites/create'
-  get 'favorites/destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'homes#top'
@@ -13,8 +8,14 @@ Rails.application.routes.draw do
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
-  end  
-  resources :users, only: [:index,:show,:edit,:update] 
+  end
+
+  resources :users, only: [:index, :show, :edit, :update] do
+    resources :relationships, only: [:create, :destroy]
+  end
+
+  get ':id/followings' => 'users#followings', as: 'followings'
+  get ':id/followers' => 'users#followers', as: 'followers'
     
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
