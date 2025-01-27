@@ -1,0 +1,43 @@
+<h1>Books search for 3333 </h1>
+
+<table>
+  <% if @model == "Book" %>
+    <tr>
+      <th><th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+    <tr>
+      <% @search_books.each do |book| %>
+        <td>
+          <%= image_tag book.user.get_profile_image, size: '50x50' %>
+        </td>
+        <td>
+          <%= book.title %>
+        </td>
+        <td>
+          <%= book.body %>
+        </td>
+      <% end %>
+    </tr>
+  <% elsif @model == "User" %>
+    <tr>
+      <th><th>
+      <th>Name</th>
+      <th>Introduction</th>
+    </tr>
+    <tr>
+      <% @search_users.each do |user| %>
+        <td>
+          <%= image_tag user.get_profile_image, size: '50x50' %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.introduction %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
