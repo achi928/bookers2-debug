@@ -1,5 +1,5 @@
 if ($(".<%= @book.id %>").length > 0) {
-  $(".<%= @book.id %>").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");
+  $(".<%= @book.id %>").html("<%= j( render 'book_comments/each', book: @book ) %>");
 } else {
   console.error("エラー: .<%= @book.id %> が見つかりませんでした");
 }
