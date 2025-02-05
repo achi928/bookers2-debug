@@ -1,2 +1,6 @@
-$("#book-comments-count").html("<%= j(render 'book_comments/count', book: @comment.book) %>");
-$("#comment-index").html("<%= j(render 'book_comments/each', book: @comment.book) %>");
+if ($("#book-comments-count").length) {
+  $("#book-comments-count").html("<%= j(render 'book_comments/count', book: @book) %>");
+}
+if ($("#comment-index").length) {
+  $("#comment-index").html("<%= j(render 'book_comments/each', book: @book) %>");
+}

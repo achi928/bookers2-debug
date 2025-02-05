@@ -24,25 +24,20 @@
           </td>
           <td class="<%= @book.id %>" >
             <%= render 'favorites/favorite-btn', book: @book %>
-          </td>
-          <div id="book-comments-count">
+          </td>          
+          <td id="book-comments-count">
             <%= render 'book_comments/count', book: @book %>
-          </div>
-
+          </td>
           <% if @user  == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
         </tr>
-        <tr>
-          <div id="comment-index">
-            <%= render 'book_comments/each', book: @book %>
-          </div>
-        </tr>
-        <tr>
-          <%= render 'book_comments/comment', book: @book, comment: @comment %>
-        </tr>
       </table>
+      <table id="comment-index">
+        <%= render 'book_comments/each', book: @book %>
+      </table>
+      <%= render 'book_comments/comment', book: @book, comment: @comment %>
     </div>
   </div>
 </div>
